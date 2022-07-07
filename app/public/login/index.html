@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-client_id" content="gratis-cv.apps.googleusercontent.com">
+    <title>Gratis CV &middot; Log in</title>
+    <link rel="stylesheet" href="../stylesheets/mustard-ui.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i|Source+Sans+Pro:400,400i,700,700i|Roboto+Condensed:300,300i,400,400i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../stylesheets/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="../stylesheets/flickity.css">
+    <link rel="stylesheet" href="../stylesheets/fontawesome-all.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div id="err-mask" style="display: none;" class="modal-mask">
+            <div id="err" style="display: none;" class="modal">
+                <div class="modal-head">Er is een fout opgetreden in het programma</div>
+                <div class="modal-body"><p class="content"></p></div>
+                <div class="modal-footer"><button class="button-err-close button-info">OK</button></div>
+            </div>
+        </div>
+        <nav class="navbar-main">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="/">Gratis CV<small>.com</small></a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="/">CV Builder</a></li>
+                    <li><a class="active" href="/login">Log in</a></li>
+                </ul>
+                <a class="mobile-menu-toggle"></a>
+                <ul class="mobile-menu menu">
+                    <li><a href="/">CV Builder</a></li>
+                    <li><a class="active" href="/login">Log in</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="login-prompt-container">
+            <div class="login-prompt-container-inner">
+                <div class="component component-login row">
+                    <div class="login-prompt col col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+                        <div class="card card-login" id="card-login">
+                            <h3 class="card-title">Log in</h3>
+                            <p class="align-center"><img width="100px" src="/images/gratiscv.png"></p>
+                            <p>Wij maken gebruik van authenticatiemethoden van derden om in te loggen op deze website. Kies een van de onderstaande platformen om veilig in te loggen. U hoeft hiervoor niet opnieuw uw wachtwoord voor in te vullen als u al bent ingelogd op het desbetreffende platform.</p>
+                            <p class="align-center">
+                                <a class="button button-large" href="/auth/google" role="button">
+                                    <img height="32px" style="margin: 6px; float: left" alt="Google logo" src="/images/Google.webp">
+                                    Inloggen met Google
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/jquery-3.3.1.min.js"></script>
+    <script src="/javascripts/mobile-menu.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="/javascripts/application.js"></script>
+</body>
+</html>

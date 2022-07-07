@@ -1,0 +1,74 @@
+version: '3.6'
+services:
+  database:
+    image: mariadb
+    container_name: ${COMPOSE_PROJECT_NAME}_database
+    volumes:
+      - db:/var/lib/mysql
+      - ./db:/docker-entrypoint-initdb.d
+      - ./db:/backup
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: $DB_ROOT_PASS
+      MYSQL_DATABASE: $DB_NAME
+      MYSQL_USER: $DB_USER
+      MYSQL_PASSWORD: $DB_PASS
+      TZ: $TZ
+    networks:
+      - backend
+  redis:
+    image: redis
+    container_name: ${COMPOSE_PROJECT_NAME}_redis
+    volumes:
+      - cache:/data
+    restart: always
+    environment:
+      TZ: $TZ
+    networks:
+      - backend
+  node:
+    depends_on:
+      - database
+      - redis
+    image: cvbuilder-node
+    build:
+      context: .
+    container_name: ${COMPOSE_PROJECT_NAME}_node
+    volumes:
+      - app:/home/node/app
+      - ./.msmtprc:/etc/msmtprc
+    restart: always
+    working_dir: /home/node/app
+    environment:
+      DB_NAME: $DB_NAME
+      DB_USER: $DB_USER
+      DB_PASS: $DB_PASS
+      OAUTH_CLIENT_ID: $OAUTH_CLIENT_ID
+      OAUTH_CLIENT_SECRET: $OAUTH_CLIENT_SECRET
+      OAUTH_SESSION_SECRET: $OAUTH_SESSION_SECRET
+      OAUTH_CALLBACK_URL: $OAUTH_CALLBACK_URL
+      NODE_ENV: $ENVIRONMENT
+      VIRTUAL_HOST: $DOMAINS
+      LETSENCRYPT_HOST: $DOMAINS
+      NETWORK_ACCESS: $NETWORK_ACCESS
+      TZ: $TZ
+    command: ["node", "bin/www"]
+    networks:
+      - frontend
+      - backend
+      - nginx_backend
+
+volumes:
+  db:
+  cache:
+  app:
+
+networks:
+  frontend:
+    external:
+      name: nginx_frontend
+  backend:
+    driver: bridge
+  nginx_backend:
+    external:
+      name: nginx_backend

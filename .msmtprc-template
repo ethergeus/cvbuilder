@@ -1,0 +1,4 @@
+host {{MAIL_HOST}}
+from noreply@{{DOMAIN_PRIMARY}}
+user noreply@{{DOMAIN_PRIMARY}}
+password {{MAIL_PASS}}

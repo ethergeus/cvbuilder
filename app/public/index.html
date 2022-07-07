@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gratis CV &middot; Voor studenten, door studenten</title>
+    <link rel="stylesheet" href="stylesheets/mustard-ui.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i|Source+Sans+Pro:400,400i,700,700i|Roboto+Condensed:300,300i,400,400i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheets/flickity.css">
+    <link rel="stylesheet" href="stylesheets/fontawesome-all.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div id="err-mask" style="display: none;" class="modal-mask">
+            <div id="err" style="display: none;" class="modal">
+                <div class="modal-head">Er is een fout opgetreden in het programma</div>
+                <div class="modal-body"><p class="content"></p></div>
+                <div class="modal-footer"><button class="button-err-close button-info">OK</button></div>
+            </div>
+        </div>
+        <nav class="navbar-main">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="/">Gratis CV<small>.com</small></a>
+                </div>
+                <ul class="nav-links">
+                    <li><a class="active" href="/">CV Builder</a></li>
+                    <li class="profile-info" style="display: none;"><a href="#">Ingelogd als&nbsp;<span class="profile-name"></span></a></li>
+                    <li><a class="account-management" href="#"></a></li>
+                    <li class="profile-info" style="display: none;"><img class="profile-picture" src="#"></li>
+                </ul>
+                <a class="mobile-menu-toggle"></a>
+                <ul class="mobile-menu menu">
+                    <li><a href="/">CV Builder</a></li>
+                    <li><a class="account-management" href="#"></a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="component component-welcome">
+            <div class="component-welcome-inner">
+                <div class="container">
+                    <h1 class="welcome"><span class="highlight">Een goed, professioneel CV hoeft geen geld te kosten</span></h1>
+                    <h5 class="welcome"><span class="highlight">gratiscv.com &middot; Voor studenten, door studenten &middot; Gratis, en dat blijft het ook!</span></h5>
+                </div>
+                <div class="container-carousel align-center" style="margin-top: 20px;">
+                    <h4 class="welcome align-center"><span class="highlight">Kies je ontwerp</span></h4>
+                    <div class="template-carousel">
+                        <div class="template-preview" data-template="awesome-cv">
+                            <img src="images/awesome-cv.png" alt="awesome-cv template" class="template-img">
+                            <p><span class="highlight"><a href="https://github.com/posquit0/Awesome-CV">Awesome CV</a> door <a href="https://github.com/posquit0">posquit0</a></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container align-center" style="margin-top: 40px;">
+                    <h5 class="welcome align-center"><span class="highlight">Je kunt je ontwerp altijd later nog veranderen, je hoeft dan niet alles opnieuw in te vullen</span></h5>
+                </div>
+            </div>
+        </div>
+        <div class="component component-cv-builder row">
+            <div class="component component-editor col col-lg-6">
+                <div class="card card-editor" id="card-editor-basic-info">
+                    <h3 class="card-title">Basisinformatie</h3>
+                    <p>Vul hier algemene informatie in, om naar het volgende onderdeel te gaan klik je op de knoppen onderaan.</p>
+                    <form id="general" class="form-editor form-basic-info">
+                        <div class="form-control-group">
+                            <div class="form-control">
+                                <label>Voornaam</label>
+                                <input name="first_name" type="text">
+                            </div>
+                            <div class="form-control">
+                                <label>Achternaam</label>
+                                <input name="last_name" type="text">
+                            </div>
+                        </div>
+                        <div class="form-control-group">
+                            <div class="form-control">
+                                <label>Titel</label>
+                                <input name="title" type="text">
+                            </div>
+                            <div class="form-control">
+                                <label>Locatie</label>
+                                <input name="location" type="text">
+                            </div>
+                        </div>
+                        <div class="form-control-group">
+                            <div class="form-control">
+                                <label>Adres</label>
+                                <input name="address" type="text">
+                            </div>
+                            <div class="form-control">
+                                <label>Postcode</label>
+                                <input name="postal_code" type="text">
+                            </div>
+                            <div class="form-control">
+                                <label>Plaats</label>
+                                <input name="city" type="text">
+                            </div>
+                            <div class="form-control">
+                                <label>Provincie</label>
+                                <input name="province" type="text">
+                            </div>
+                        </div>
+                        <div class="form-control-group">
+                            <div class="form-control">
+                                <label>Telefoonnummer</label>
+                                <input name="phone" type="text">
+                            </div>
+                            <div class="form-control">
+                                <label>Email</label>
+                                <input name="email" type="text">
+                            </div>
+                            <div class="form-control">
+                                <label>Website</label>
+                                <input name="website" type="text">
+                            </div>
+                        </div>
+                        <div class="form-control-group">
+                            <div class="form-control">
+                                <label>Geboortedatum</label>
+                                <input name="birthday" type="text">
+                            </div>
+                            <div class="form-control">
+                                <label>Nationaliteit</label>
+                                <input name="nationality" type="text">
+                            </div>
+                            <div class="form-control">
+                                <label>Burgelijke staat</label>
+                                <input name="marital_status" type="text">
+                            </div>
+                        </div>
+                        <div class="form-options">
+                            <div class="align-center">
+                                <button class="button-form button-remove button-danger">
+                                    <i class="fas fa-fire"></i> Verwijderen
+                                </button>
+                                <button class="button-form button-reset button-warning" type="reset">
+                                    <i class="fas fa-eraser"></i> Terugzetten
+                                </button>
+                                <button class="button-form button-make button-success" data-toggle=".button-patience">
+                                    <i class="fas fa-save"></i> Opslaan
+                                </button>
+                                <button style="display: none;" class="button-patience button-primary-outlined"><i class="fas fa-spinner fa-spin"></i> <span class="mock"></span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card card-editor" style="display: none;" id="card-editor-education">
+                    <h3 class="card-title">Opleiding</h3>
+                    <p>Geef hier een duidelijk beeld van je opleidingstraject. Zet je opleiding in chronologische volgorde en zorg voor een duidelijk overzicht. Noem per opleiding een aantal punten ter verduidelijking, bijvoorbeeld inhoudelijk over de opleiding of speciale prestaties zoals cum laude geslaagd zijn.</p>
+                    <form id="education" class="form-editor form-education">
+                        <div class="form-entry form-entry-education">
+                            <div class="form-control-group">
+                                <div class="form-control">
+                                    <label>Instelling</label>
+                                    <input name="education_name" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Plaats</label>
+                                    <input name="education_city" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Opleiding</label>
+                                    <input name="education_course" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Tijdspan</label>
+                                    <input name="education_timespan" type="text">
+                                </div>
+                            </div>
+                            <div class="form-control-group">
+                                <div class="form-control">
+                                    <label>Eigenschap 1</label>
+                                    <input name="education_property0" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Eigenschap 2 (optioneel)</label>
+                                    <input name="education_property1" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Eigenschap 3 (optioneel)</label>
+                                    <input name="education_property2" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-entry form-entry-education">
+                            <div class="form-control-group">
+                                <div class="form-control">
+                                    <label>Instelling</label>
+                                    <input name="education_name" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Plaats</label>
+                                    <input name="education_city" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Opleiding</label>
+                                    <input name="education_course" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Tijdspan</label>
+                                    <input name="education_timespan" type="text">
+                                </div>
+                            </div>
+                            <div class="form-control-group">
+                                <div class="form-control">
+                                    <label>Eigenschap 1</label>
+                                    <input name="education_property0" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Eigenschap 2 (optioneel)</label>
+                                    <input name="education_property1" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Eigenschap 3 (optioneel)</label>
+                                    <input name="education_property2" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-options">
+                            <div class="align-center">
+                                <button class="button-entry button-entry-copy button-success" data-copy=".form-entry-education">
+                                    <i class="fas fa-plus"></i> Opleiding toevoegen
+                                </button>
+                                <button class="button-entry button-entry-remove button-danger" data-remove=".form-entry-education">
+                                    <i class="fas fa-minus"></i> Opleiding weghalen
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-options">
+                            <div class="align-center">
+                                <button class="button-form button-remove button-danger">
+                                    <i class="fas fa-fire"></i> Verwijderen
+                                </button>
+                                <button class="button-form button-reset button-warning" type="reset">
+                                    <i class="fas fa-eraser"></i> Terugzetten
+                                </button>
+                                <button class="button-form button-make button-success" data-toggle=".button-patience">
+                                    <i class="fas fa-save"></i> Opslaan
+                                </button>
+                                <button style="display: none;" class="button-patience button-primary-outlined"><i class="fas fa-spinner fa-spin"></i> <span class="mock"></span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card card-editor" style="display: none;" id="card-editor-experience">
+                    <h3 class="card-title">Ervaring</h3>
+                    <p>Laat zien welke ervaringen je hebt opgedaan in het verleden.</p>
+                    <form id="experience" class="form-editor form-experience">
+                        <div class="form-entry form-entry-experience">
+                            <div class="form-control-group">
+                                <div class="form-control">
+                                    <label>Bedrijf</label>
+                                    <input name="experience_name" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Plaats</label>
+                                    <input name="experience_city" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Functie</label>
+                                    <input name="experience_function" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Tijdspan</label>
+                                    <input name="experience_timespan" type="text">
+                                </div>
+                            </div>
+                            <div class="form-control-group">
+                                <div class="form-control">
+                                    <label>Eigenschap 1</label>
+                                    <input name="experience_property0" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Eigenschap 2 (optioneel)</label>
+                                    <input name="experience_property1" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Eigenschap 3 (optioneel)</label>
+                                    <input name="experience_property2" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-entry form-entry-experience">
+                            <div class="form-control-group">
+                                <div class="form-control">
+                                    <label>Bedrijf</label>
+                                    <input name="experience_name" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Plaats</label>
+                                    <input name="experience_city" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Functie</label>
+                                    <input name="experience_function" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Tijdspan</label>
+                                    <input name="experience_timespan" type="text">
+                                </div>
+                            </div>
+                            <div class="form-control-group">
+                                <div class="form-control">
+                                    <label>Eigenschap 1</label>
+                                    <input name="experience_property0" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Eigenschap 2 (optioneel)</label>
+                                    <input name="experience_property1" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Eigenschap 3 (optioneel)</label>
+                                    <input name="experience_property2" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-options">
+                            <div class="align-center">
+                                <button class="button-entry button-entry-copy button-success" data-copy=".form-entry-experience">
+                                    <i class="fas fa-plus"></i> Ervaring toevoegen
+                                </button>
+                                <button class="button-entry button-entry-remove button-danger" data-remove=".form-entry-experience">
+                                    <i class="fas fa-minus"></i> Ervaring weghalen
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-options">
+                            <div class="align-center">
+                                <button class="button-form button-remove button-danger">
+                                    <i class="fas fa-fire"></i> Verwijderen
+                                </button>
+                                <button class="button-form button-reset button-warning" type="reset">
+                                    <i class="fas fa-eraser"></i> Terugzetten
+                                </button>
+                                <button class="button-form button-make button-success" data-toggle=".button-patience">
+                                    <i class="fas fa-save"></i> Opslaan
+                                </button>
+                                <button style="display: none;" class="button-patience button-primary-outlined"><i class="fas fa-spinner fa-spin"></i> <span class="mock"></span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card card-editor" style="display: none;" id="card-editor-internship">
+                    <h3 class="card-title">Stageplekken</h3>
+                    <p>Stages horen ook thuis op je CV. Je kunt deze onderverdelen in meerdere categorieën. Als twee opvolgende stages onder dezelfde categorie vallen zullen deze bij elkaar geplaatst worden. Je bent vrij om de categorieën zelf te definiëren.</p>
+                    <form id="internship" class="form-editor form-internship">
+                        <div class="form-entry form-entry-internship">
+                            <div class="form-control-group">
+                                <div class="form-control">
+                                    <label>Categorie</label>
+                                    <input name="internship_category" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Tijdspan</label>
+                                    <input name="internship_timespan" type="text">
+                                </div>
+                                <div class="form-control grow-2x">
+                                    <label>Bedrijf of instelling</label>
+                                    <input name="internship_name" type="text">
+                                </div>
+                            </div>
+                            <div class="form-control-group">
+                                <div class="form-control">
+                                    <label>Plaats</label>
+                                    <input name="internship_city" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Functie</label>
+                                    <input name="internship_function" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-entry form-entry-internship">
+                            <div class="form-control-group">
+                                <div class="form-control">
+                                    <label>Categorie</label>
+                                    <input name="internship_category" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Tijdspan</label>
+                                    <input name="internship_timespan" type="text">
+                                </div>
+                                <div class="form-control grow-2x">
+                                    <label>Bedrijf of instelling</label>
+                                    <input name="internship_name" type="text">
+                                </div>
+                            </div>
+                            <div class="form-control-group">
+                                <div class="form-control">
+                                    <label>Plaats</label>
+                                    <input name="internship_city" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Functie</label>
+                                    <input name="internship_function" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-entry form-entry-internship">
+                            <div class="form-control-group">
+                                <div class="form-control">
+                                    <label>Categorie</label>
+                                    <input name="internship_category" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Tijdspan</label>
+                                    <input name="internship_timespan" type="text">
+                                </div>
+                                <div class="form-control grow-2x">
+                                    <label>Bedrijf of instelling</label>
+                                    <input name="internship_name" type="text">
+                                </div>
+                            </div>
+                            <div class="form-control-group">
+                                <div class="form-control">
+                                    <label>Plaats</label>
+                                    <input name="internship_city" type="text">
+                                </div>
+                                <div class="form-control">
+                                    <label>Functie</label>
+                                    <input name="internship_function" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-options">
+                            <div class="align-center">
+                                <button class="button-entry button-entry-copy button-success" data-copy=".form-entry-internship">
+                                    <i class="fas fa-plus"></i> Stageplek toevoegen
+                                </button>
+                                <button class="button-entry button-entry-remove button-danger" data-remove=".form-entry-internship">
+                                    <i class="fas fa-minus"></i> Stageplek weghalen
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-options">
+                            <div class="align-center">
+                                <button class="button-form button-remove button-danger">
+                                    <i class="fas fa-fire"></i> Verwijderen
+                                </button>
+                                <button class="button-form button-reset button-warning" type="reset">
+                                    <i class="fas fa-eraser"></i> Terugzetten
+                                </button>
+                                <button class="button-form button-make button-success" data-toggle=".button-patience">
+                                    <i class="fas fa-save"></i> Opslaan
+                                </button>
+                                <button style="display: none;" class="button-patience button-primary-outlined"><i class="fas fa-spinner fa-spin"></i> <span class="mock"></span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="align-center">
+                    <button class="button-editor button-primary" data-hide=".card-editor" data-show="#card-editor-basic-info">Basis</button>
+                    <button class="button-editor button-info" data-hide=".card-editor" data-show="#card-editor-education">Opleiding</button>
+                    <button class="button-editor button-info" data-hide=".card-editor" data-show="#card-editor-experience">Ervaring</button>
+                    <button class="button-editor button-info" data-hide=".card-editor" data-show="#card-editor-internship">Stageplekken</button>
+                </div>
+            </div>
+            <div class="component component-viewer col col-lg-6">
+                <iframe class="pdf-viewer"></iframe>
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/jquery-3.3.1.min.js"></script>
+    <script src="/javascripts/mobile-menu.js"></script>
+    <script src="/javascripts/flickity.pkgd.min.js"></script>
+    <script src="/javascripts/application.js"></script>
+</body>
+</html>
