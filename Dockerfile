@@ -1,6 +1,6 @@
 FROM node
 
-RUN apt update && apt install -y ca-certificates msmtp mailutils texlive-full texlive-xetex
+RUN apt update && apt install -y ca-certificates msmtp mailutils texlive texlive-xetex texlive-fonts-extra
 
 WORKDIR /home/node/app
 
