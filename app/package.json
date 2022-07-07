@@ -17,10 +17,10 @@
     "morgan": "~1.9.0",
     "mysql": "^2.18.1",
     "node-latex": "^2.6.4",
-    "passport": "^0.4.1",
+    "passport": ">=0.6.0",
     "passport-google-oauth20": "^2.0.0",
     "pdfobject": "^2.2.7",
-    "redis": "^2.8.0",
+    "redis": ">=3.1.1",
     "socket.io": "^2.4.1"
   }
 }
