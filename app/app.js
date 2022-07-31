@@ -186,8 +186,8 @@ io.on('connection', function(socket) {
     };
     socket.nullify = async function(category) {
         let conn = await pool.getConnection();
-        // Write null to database category
-        await conn.query(`UPDATE users SET ${category} = NULL WHERE googleid = ?;`, [socket.user])
+        // Write empty string to database category
+        await conn.query(`UPDATE users SET ${category} = ? WHERE googleid = ?;`, ['', socket.user]);
     };
     socket.unlink = function() {
         // Unlink tex file
