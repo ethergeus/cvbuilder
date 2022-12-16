@@ -21,7 +21,9 @@ const querystring = require('querystring');
  * Constants from process environment variables and docker configuration
  */
 const redisCredentials = {
-    host: 'redis'
+    host: 'redis',
+    socket: { host: 'redis' },
+    legacyMode: true
 }
 const databaseCredentials = {
     host: 'database',
@@ -30,9 +32,9 @@ const databaseCredentials = {
     pass: process.env.DB_PASS
 }
 const oauth20 = {
-    client_id: process.env.OAUTH_CLIENT_ID,
-    client_secret: process.env.OAUTH_CLIENT_SECRET,
-    session_secret: process.env.OAUTH_SESSION_SECRET,
+    clientID: process.env.OAUTH_CLIENT_ID,
+    clientSecret: process.env.OAUTH_CLIENT_SECRET,
+    callbackURL: process.env.OAUTH_CALLBACK_URL
 }
 
 /*
@@ -54,8 +56,9 @@ let indexRouter = require('./routes/index');
 
 let client = redis.createClient(redisCredentials);
 client.on('error', function(err) {
-    console.log('Error ' + err);
+    console.log(err);
 });
+(async () => { await client.connect(); })();
 
 let redisStore = require('connect-redis')(session);
 let store = new redisStore({ client });
@@ -72,18 +75,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
     store: store,
-    secret: oauth20.session_secret,
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
 }));
 
 module.exports = app;
 
-passport.use(new GoogleStrategy({
-    clientID: oauth20.client_id,
-    clientSecret: oauth20.client_secret,
-    callbackURL: oauth20.callback_url
-}, async function(accessToken, refreshToken, googleProfile, callback) {
+passport.use(new GoogleStrategy(oauth20, async function(accessToken, refreshToken, googleProfile, callback) {
     // Check if google id has been registered in database
     let conn = await pool.getConnection();
     let rows = await conn.query('SELECT * FROM users WHERE googleid = ?;', [googleProfile.id]);
