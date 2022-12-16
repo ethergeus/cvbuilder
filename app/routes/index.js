@@ -13,9 +13,8 @@ router.get('/auth/google/callback', passport.authenticate('google', { failureRed
   res.redirect('/');
 });
 router.get('/loguit', function(req, res) {
-  req.logout();
-  req.session.destroy(function(err) {
-    if (err) console.log(err);
+  req.logout(function(err) {
+    if (err) { return next(err); }
     res.redirect('/');
   });
 });
