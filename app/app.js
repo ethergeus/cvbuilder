@@ -29,7 +29,7 @@ const databaseCredentials = {
     host: 'database',
     database: process.env.DB_NAME,
     user: process.env.DB_USER,
-    pass: process.env.DB_PASS
+    password: process.env.DB_PASS
 }
 const oauth20 = {
     clientID: process.env.OAUTH_CLIENT_ID,
